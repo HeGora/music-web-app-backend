@@ -1,17 +1,25 @@
 from django.db import models
 
 class Audio(models.Model):
-    audio_file = models.FileField('audios/')
+    audio_file = models.FileField(upload_to='audios/', null=True, blank=True)
     name = models.CharField(max_length = 200)
-    duration = models.DurationField()
+    duration = models.DurationField(null=True, blank=True)
     album = models.ForeignKey(
         'Playlist', 
         blank=True, 
         null=True, 
         on_delete=models.SET_NULL,
         )
-    artists = models.ManyToManyField('Artist', related_name='audios')
-    tags = models.ManyToManyField('AudioTag', related_name='audios')
+    artists = models.ManyToManyField(
+        'Artist',
+        related_name='audios', 
+        blank=True,
+        )
+    tags = models.ManyToManyField(
+        'AudioTag',
+        related_name='audios', 
+        blank=True,
+        )
     
 class Playlist(models.Model):
     name = models.CharField(max_length = 200)
@@ -19,8 +27,8 @@ class Playlist(models.Model):
         Audio,
         through='PlaylistAudio',
         through_fields=('playlist', 'audio'),
+        blank=True,
         )
-    artists = models.ManyToManyField('Artist')
 
 class PlaylistAudio(models.Model):
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
@@ -29,7 +37,12 @@ class PlaylistAudio(models.Model):
 
 class Artist(models.Model):
     name = models.CharField(max_length = 200)
+    albums = models.ManyToManyField(
+        Playlist, 
+        related_name='album_artists',
+        blank=True
+        )
 
 
 class AudioTag(models.Model):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length = 100, unique=True)

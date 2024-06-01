@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Run Django",
+        "type": "python",
+        "request": "attach",
+        "pathMappings": [
+          {
+            "localRoot": "${workspaceFolder}/django-rest-api",
+            "remoteRoot": "/usr/src/django-rest-api"
+          }
+        ],
+        "port": 3000,
+        "host": "127.0.0.1",
+        "justMyCode": false,
+      }
+    ]
+  }
