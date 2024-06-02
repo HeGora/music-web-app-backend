@@ -18,15 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework import routers
-from music_library_api.api.views import AudioViewSet
-
-router = routers.SimpleRouter()
-router.register(r'audios', AudioViewSet, basename='audio')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls))
+    path('', include('music_library_api.api.urls'))
 ]
 
 if bool(settings.DEBUG):
