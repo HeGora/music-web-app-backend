@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('music_library_api.api.urls'))
+    path('', include('music_library_api.api.urls')),
+    path('', include('user.api.urls'))
 ]
 
 if bool(settings.DEBUG):
