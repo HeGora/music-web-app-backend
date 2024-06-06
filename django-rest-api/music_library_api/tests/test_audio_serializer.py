@@ -3,7 +3,7 @@ from django.test import TestCase
 from music_library_api.models import Audio, Artist, AudioTag
 from music_library_api.api.serializers import AudioSerializer
 
-#refactor using data-factory library
+# TODO: refactor using data-factory library
 class AudioSerializerTests(TestCase):
 
     def setUp(self):

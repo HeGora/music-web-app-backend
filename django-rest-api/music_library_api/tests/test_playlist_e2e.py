@@ -5,7 +5,7 @@ from rest_framework.test import APIClient, APITestCase
 from music_library_api.models import Playlist, Artist, Audio
 
 
-#refactor using data-factory library
+# TODO: refactor using data-factory library
 class PlaylistViewSetTests(APITestCase):
 
     def setUp(self):

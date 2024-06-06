@@ -6,7 +6,7 @@ import json
 import io
 import unittest
 
-#refactor using data-factory library
+# TODO: refactor using data-factory library
 class MultipartJSONParserTest(unittest.TestCase):
 
     def setUp(self):
